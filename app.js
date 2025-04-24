@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const mongooseconnection = require("./config/mongoose");
 const khataModel = require("./models/khata");
-
+require("dotenv").config();
 app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -114,6 +114,6 @@ app.get("/delete/:filename", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("App listening on port http://localhost:3000");
 });
